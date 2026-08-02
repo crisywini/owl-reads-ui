@@ -1,7 +1,8 @@
  .titleContainer {
-
+    display: flex;
+    flex-direction: column;
  }
 
  .imageContainer {
-    
+   
  }
