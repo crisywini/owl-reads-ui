@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import GiovannisRoom from './assets/GiovannisRoom.jpeg'
+import BookCard from './components/BookCard'
 import './App.css'
 
 function App() {
@@ -9,7 +8,9 @@ function App() {
 
   return (
     <>
-      
+      <BookCard title="El nombre del viento" authors="Patrick Rothfuss" imageUrl={GiovannisRoom}></BookCard>
+      <BookCard title="El nombre del viento" authors="Patrick Rothfuss" imageUrl={GiovannisRoom}></BookCard>
+
     </>
   )
 }

@@ -1,8 +1,34 @@
+ .bookCardContainer {
+   display: flex;
+   flex-direction: row;
+   gap: 2rem;
+   width: 300px;
+   border: 1px solid #000000;
+   border-radius: 20px;
+   cursor: pointer;
+ }
+
+ .bookCardContainer:hover{
+   background-color: rgba(0, 0, 0, 0.05); 
+   transform: scale(1.02);                 
+
+ }
+ 
  .titleContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
  }
 
  .imageContainer {
-   
+   width: 40%;
+   height: 40%;
+   border-radius: 8px;
+   overflow: hidden;
+ }
+
+ .imageContainer img {
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
  }

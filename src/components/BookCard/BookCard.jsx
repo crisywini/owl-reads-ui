@@ -2,14 +2,15 @@ import './BookCard.css';
 
 function BookCard({title, authors, imageUrl}) {
     return (
-        <div>
-            <div className='titleContainer'>
-                <h1>{title}</h1>
-                <h2>{authors}</h2>
-            </div>
+        <div className="bookCardContainer">
             <div className='imageContainer'>
                 <img src={imageUrl} alt="logo"></img>
             </div>
+            <div className='titleContainer'>
+                <h2>{title}</h2>
+                <h3>{authors}</h3>
+            </div>
+
     
         </div>
     )
