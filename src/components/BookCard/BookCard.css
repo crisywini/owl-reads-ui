@@ -6,6 +6,7 @@
    border: 1px solid #000000;
    border-radius: 20px;
    cursor: pointer;
+   margin: 1rem;
  }
 
  .bookCardContainer:hover{
@@ -21,8 +22,8 @@
  }
 
  .imageContainer {
-   width: 40%;
-   height: 40%;
+   width: 30%;
+   height: 30%;
    border-radius: 8px;
    overflow: hidden;
  }
