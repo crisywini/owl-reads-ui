@@ -1,35 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getReviewsByBookId } from '../services/reviewService';
 
-// Fetches reviews for a single book. Each time a different book is opened,
-// BookDetailOverlay mounts a brand new ReviewList (and therefore a fresh
-// call to this hook), so isLoading only needs to be seeded once from the
-// initial bookId instead of being reset from inside the effect.
+// Fetches reviews for a single book and exposes a refetch so callers (like
+// AddReviewForm, once a new review is saved) can ask for the latest list
+// without this hook needing to know anything about how reviews get created.
 export function useBookReviews(bookId) {
     const [reviews, setReviews] = useState([]);
     const [isLoading, setIsLoading] = useState(() => Boolean(bookId));
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        if (!bookId) return;
+    const fetchReviews = useCallback(() => {
+        if (!bookId) return Promise.resolve();
 
-        let isCancelled = false;
-
-        getReviewsByBookId(bookId)
+        return getReviewsByBookId(bookId)
             .then((data) => {
-                if (!isCancelled) setReviews(data ?? []);
+                setReviews(data ?? []);
+                setError(null);
             })
-            .catch((err) => {
-                if (!isCancelled) setError(err);
-            })
-            .finally(() => {
-                if (!isCancelled) setIsLoading(false);
-            });
-
-        return () => {
-            isCancelled = true;
-        };
+            .catch((err) => setError(err))
+            .finally(() => setIsLoading(false));
     }, [bookId]);
 
-    return { reviews, isLoading, error };
+    useEffect(() => {
+        fetchReviews();
+    }, [fetchReviews]);
+
+    return { reviews, isLoading, error, refetch: fetchReviews };
 }

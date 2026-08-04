@@ -1,13 +1,10 @@
-import { useBookReviews } from '../../hooks/useBookReviews';
 import ReviewCard from '../ReviewCard';
 import './ReviewList.css';
 
-// Fetches and renders every review for a single book. Owns its own data
-// fetching (via useBookReviews) so the overlay that hosts it only has to
-// pass down a bookId.
-function ReviewList({ bookId }) {
-    const { reviews, isLoading, error } = useBookReviews(bookId);
-
+// Purely presentational: renders whatever reviews it's handed. Data fetching
+// lives in BookDetailOverlay so it can be shared with AddReviewForm, which
+// needs to trigger a refetch after saving a new review.
+function ReviewList({ reviews, isLoading, error }) {
     if (isLoading) {
         return <p className="reviewList__status">Loading reviews...</p>;
     }
