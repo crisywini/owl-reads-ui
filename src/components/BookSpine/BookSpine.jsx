@@ -1,4 +1,4 @@
-import { useSelectedBook } from '../../context/SelectedBookContext';
+import { useSelectedBook } from '../../hooks/useSelectedBook';
 import { getSpineColor, getSpineHeight } from '../../utils/spineColor';
 import './BookSpine.css';
 

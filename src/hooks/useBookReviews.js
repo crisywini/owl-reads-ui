@@ -1,22 +1,19 @@
 import { useEffect, useState } from 'react';
 import { getReviewsByBookId } from '../services/reviewService';
 
-// Fetches reviews for a single book. bookId is nullable so callers can wait
-// until a book is actually selected before making a request.
+// Fetches reviews for a single book. Each time a different book is opened,
+// BookDetailOverlay mounts a brand new ReviewList (and therefore a fresh
+// call to this hook), so isLoading only needs to be seeded once from the
+// initial bookId instead of being reset from inside the effect.
 export function useBookReviews(bookId) {
     const [reviews, setReviews] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(() => Boolean(bookId));
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (!bookId) {
-            setReviews([]);
-            return;
-        }
+        if (!bookId) return;
 
         let isCancelled = false;
-        setIsLoading(true);
-        setError(null);
 
         getReviewsByBookId(bookId)
             .then((data) => {

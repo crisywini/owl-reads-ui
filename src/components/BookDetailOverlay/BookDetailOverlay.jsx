@@ -1,4 +1,4 @@
-import { useSelectedBook } from '../../context/SelectedBookContext';
+import { useSelectedBook } from '../../hooks/useSelectedBook';
 import ReviewList from '../ReviewList';
 import './BookDetailOverlay.css';
 

@@ -1,6 +1,5 @@
-import { createContext, useContext, useMemo, useState } from 'react';
-
-const SelectedBookContext = createContext(null);
+import { useMemo, useState } from 'react';
+import { SelectedBookContext } from './selectedBookContextObject';
 
 // The shelf -> open book experience has four states:
 //   idle     -> nothing selected, shelves are interactive
@@ -10,16 +9,9 @@ const SelectedBookContext = createContext(null);
 // Modelling it explicitly (instead of a couple of booleans) avoids
 // impossible combinations, like a book being "open" while its spine is
 // still animating.
-const STATUS = {
-    IDLE: 'idle',
-    PULLING: 'pulling',
-    OPEN: 'open',
-    CLOSING: 'closing',
-};
-
 export function SelectedBookProvider({ children }) {
     const [selectedBook, setSelectedBook] = useState(null);
-    const [status, setStatus] = useState(STATUS.IDLE);
+    const [status, setStatus] = useState('idle');
 
     const value = useMemo(
         () => ({
@@ -27,24 +19,24 @@ export function SelectedBookProvider({ children }) {
             status,
             // Step 1: user clicks a spine -> it starts pulling itself off the shelf.
             selectBook(book) {
-                if (status !== STATUS.IDLE) return;
+                if (status !== 'idle') return;
                 setSelectedBook(book);
-                setStatus(STATUS.PULLING);
+                setStatus('pulling');
             },
             // Step 2: the spine's pull animation finished -> show the open book.
             finishPulling() {
-                setStatus((current) => (current === STATUS.PULLING ? STATUS.OPEN : current));
+                setStatus((current) => (current === 'pulling' ? 'open' : current));
             },
             // Step 3: user closes the book -> play the closing animation.
             closeBook() {
-                setStatus((current) => (current === STATUS.OPEN ? STATUS.CLOSING : current));
+                setStatus((current) => (current === 'open' ? 'closing' : current));
             },
             // Step 4: the closing animation finished -> back to an empty shelf.
             finishClosing() {
                 setStatus((current) => {
-                    if (current !== STATUS.CLOSING) return current;
+                    if (current !== 'closing') return current;
                     setSelectedBook(null);
-                    return STATUS.IDLE;
+                    return 'idle';
                 });
             },
         }),
@@ -52,12 +44,4 @@ export function SelectedBookProvider({ children }) {
     );
 
     return <SelectedBookContext.Provider value={value}>{children}</SelectedBookContext.Provider>;
-}
-
-export function useSelectedBook() {
-    const context = useContext(SelectedBookContext);
-    if (!context) {
-        throw new Error('useSelectedBook must be used within a SelectedBookProvider');
-    }
-    return context;
 }
