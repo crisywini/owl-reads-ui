@@ -1,31 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getBooks } from '../services/bookService';
 
-// Fetches every book once when the component mounts and exposes the
-// three states a UI typically needs: still loading, failed, or ready.
+// Fetches every book and exposes a refetch so callers (like AddBookForm,
+// once a new book is saved) can ask for the latest shelf without this hook
+// needing to know anything about how books get created.
 export function useBooks() {
     const [books, setBooks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        let isCancelled = false;
-
-        getBooks()
+    const fetchBooks = useCallback(() => {
+        return getBooks()
             .then((data) => {
-                if (!isCancelled) setBooks(data ?? []);
+                setBooks(data ?? []);
+                setError(null);
             })
-            .catch((err) => {
-                if (!isCancelled) setError(err);
-            })
-            .finally(() => {
-                if (!isCancelled) setIsLoading(false);
-            });
-
-        return () => {
-            isCancelled = true;
-        };
+            .catch((err) => setError(err))
+            .finally(() => setIsLoading(false));
     }, []);
 
-    return { books, isLoading, error };
+    useEffect(() => {
+        fetchBooks();
+    }, [fetchBooks]);
+
+    return { books, isLoading, error, refetch: fetchBooks };
 }
