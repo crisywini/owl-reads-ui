@@ -1,6 +1,6 @@
-// A small set of book-cloth colors, picked once instead of at random so a
-// given book always renders with the same spine color across re-renders.
-const SPINE_PALETTE = [
+// A small set of book-cloth colors. Exported so the "add a book" form can
+// offer the exact same swatches a reader picks from when cataloging a book.
+export const SPINE_PALETTE = [
     '#7f1d1d', // maroon
     '#1e3a5f', // navy
     '#14532d', // forest green
@@ -20,7 +20,12 @@ function hashString(value) {
     return Math.abs(hash);
 }
 
+// Prefers the color chosen when the book was added; older/seeded books that
+// don't have one fall back to a color hashed from their id/title, so every
+// spine still looks intentional instead of defaulting to one flat color.
 export function getSpineColor(book) {
+    if (book.spine_color) return book.spine_color;
+
     const seed = book.id || book.title || '';
     return SPINE_PALETTE[hashString(seed) % SPINE_PALETTE.length];
 }
