@@ -1,0 +1,130 @@
+.addReviewForm {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e8dcc4;
+    text-align: left;
+}
+
+.addReviewForm h3 {
+    margin: 0 0 1rem;
+    color: #2b1d12;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.1rem;
+}
+
+.addReviewForm__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.addReviewForm__label {
+    font-size: 0.85rem;
+    color: #6b5a3e;
+    font-weight: 600;
+}
+
+.addReviewForm__stars {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.addReviewForm__star {
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #d8cbaa;
+    cursor: pointer;
+    padding: 0;
+}
+
+.addReviewForm__star--filled {
+    color: #b8860b;
+}
+
+.addReviewForm__textarea {
+    font: inherit;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e8dcc4;
+    border-radius: 6px;
+    background: #fffaf0;
+    resize: vertical;
+}
+
+.addReviewForm__phraseInput {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.addReviewForm__phraseInput input {
+    flex: 1;
+    font: inherit;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #e8dcc4;
+    border-radius: 6px;
+    background: #fffaf0;
+}
+
+.addReviewForm__phraseInput button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e8dcc4;
+    border-radius: 6px;
+    background: #e8dcc4;
+    color: #3d2a17;
+    cursor: pointer;
+}
+
+.addReviewForm__phrases {
+    list-style: none;
+    margin: 0.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.addReviewForm__phrases li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    background: #fffaf0;
+    border: 1px solid #e8dcc4;
+    border-radius: 6px;
+    font-style: italic;
+    color: #6b5a3e;
+    font-size: 0.9rem;
+}
+
+.addReviewForm__phrases button {
+    border: none;
+    background: none;
+    color: #a35b4d;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.addReviewForm__error {
+    color: #a3312a;
+    font-size: 0.85rem;
+    margin: 0 0 1rem;
+}
+
+.addReviewForm__submit {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    background: #6b4423;
+    color: #f4e9d8;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.addReviewForm__submit:disabled {
+    background: #cbb896;
+    cursor: not-allowed;
+}
