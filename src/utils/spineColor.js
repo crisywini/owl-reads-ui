@@ -24,3 +24,14 @@ export function getSpineColor(book) {
     const seed = book.id || book.title || '';
     return SPINE_PALETTE[hashString(seed) % SPINE_PALETTE.length];
 }
+
+const MIN_SPINE_HEIGHT = 150;
+const MAX_SPINE_HEIGHT = 210;
+
+// Real shelves don't line up perfectly, so vary each spine's height a bit
+// based on the same book seed used for its color.
+export function getSpineHeight(book) {
+    const seed = book.id || book.title || '';
+    const range = MAX_SPINE_HEIGHT - MIN_SPINE_HEIGHT;
+    return `${MIN_SPINE_HEIGHT + (hashString(seed) % range)}px`;
+}
