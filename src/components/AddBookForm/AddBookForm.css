@@ -1,0 +1,121 @@
+.addBookForm {
+    text-align: left;
+}
+
+.addBookForm__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.addBookForm__label {
+    font-size: 0.85rem;
+    color: #6b5a3e;
+    font-weight: 600;
+}
+
+.addBookForm__field input[type='text'] {
+    font: inherit;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #e8dcc4;
+    border-radius: 6px;
+    background: #fffaf0;
+}
+
+.addBookForm__authorInput {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.addBookForm__authorInput input {
+    flex: 1;
+}
+
+.addBookForm__authorInput button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e8dcc4;
+    border-radius: 6px;
+    background: #e8dcc4;
+    color: #3d2a17;
+    cursor: pointer;
+}
+
+.addBookForm__authors {
+    list-style: none;
+    margin: 0.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.addBookForm__authors li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    background: #fffaf0;
+    border: 1px solid #e8dcc4;
+    border-radius: 6px;
+    color: #3d2a17;
+    font-size: 0.9rem;
+}
+
+.addBookForm__authors button {
+    border: none;
+    background: none;
+    color: #a35b4d;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.addBookForm__preview {
+    margin-top: 0.5rem;
+    width: 96px;
+    height: 128px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #e8dcc4;
+}
+
+.addBookForm__swatches {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.addBookForm__swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.addBookForm__swatch--selected {
+    border-color: #3d2a17;
+}
+
+.addBookForm__error {
+    color: #a3312a;
+    font-size: 0.85rem;
+    margin: 0 0 1rem;
+}
+
+.addBookForm__submit {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    background: #6b4423;
+    color: #f4e9d8;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.addBookForm__submit:disabled {
+    background: #cbb896;
+    cursor: not-allowed;
+}
