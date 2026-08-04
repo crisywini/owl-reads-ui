@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import BookShelf from '../../components/BookShelf';
 import BookDetailOverlay from '../../components/BookDetailOverlay';
+import AddBookModal from '../../components/AddBookModal';
 import { useBooks } from '../../hooks/useBooks';
 import { chunkArray } from '../../utils/chunkArray';
 import './LibraryPage.css';
@@ -12,12 +14,13 @@ const BOOKS_PER_SHELF = 8;
 // shelves. Header/Footer bracket the shelves in normal document flow, so the
 // page just scrolls like any other page as more shelves come into view.
 function LibraryPage() {
-    const { books, isLoading, error } = useBooks();
+    const { books, isLoading, error, refetch } = useBooks();
+    const [isAddBookOpen, setIsAddBookOpen] = useState(false);
     const shelves = chunkArray(books, BOOKS_PER_SHELF);
 
     return (
         <div className="libraryPage">
-            <Header />
+            <Header onAddBook={() => setIsAddBookOpen(true)} />
 
             <main className="libraryPage__shelves">
                 {isLoading && <p className="libraryPage__status">Loading the library...</p>}
@@ -29,7 +32,7 @@ function LibraryPage() {
                 )}
 
                 {!isLoading && !error && books.length === 0 && (
-                    <p className="libraryPage__status">No books yet. Add some through owl-service.</p>
+                    <p className="libraryPage__status">No books yet. Add one with the button above.</p>
                 )}
 
                 {shelves.map((shelfBooks, index) => (
@@ -39,6 +42,10 @@ function LibraryPage() {
 
             <Footer />
             <BookDetailOverlay />
+
+            {isAddBookOpen && (
+                <AddBookModal onClose={() => setIsAddBookOpen(false)} onBookAdded={refetch} />
+            )}
         </div>
     );
 }

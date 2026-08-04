@@ -36,6 +36,14 @@ function BookDetailOverlay() {
                     ×
                 </button>
 
+                {selectedBook.cover_image && (
+                    <img
+                        className="bookDetailOverlay__cover"
+                        src={selectedBook.cover_image}
+                        alt={`Cover of ${selectedBook.title}`}
+                    />
+                )}
+
                 <h2 className="bookDetailOverlay__title">{selectedBook.title}</h2>
                 <p className="bookDetailOverlay__authors">{selectedBook.authors?.join(', ')}</p>
 
