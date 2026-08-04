@@ -1,0 +1,39 @@
+.reviewCard {
+    background: #fffaf0;
+    border: 1px solid #e8dcc4;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    text-align: left;
+}
+
+.reviewCard__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.reviewCard__stars {
+    color: #b8860b;
+    letter-spacing: 0.1em;
+}
+
+.reviewCard__dates {
+    font-size: 0.8rem;
+    color: #8a7a5c;
+}
+
+.reviewCard__description {
+    margin: 0 0 0.5rem;
+    color: #3d2a17;
+    line-height: 1.5;
+}
+
+.reviewCard__phrases {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: #6b5a3e;
+    font-style: italic;
+    font-size: 0.9rem;
+}
