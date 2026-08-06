@@ -1,0 +1,24 @@
+.headerContainer{
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.titlecontainer {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.addBooksContainer{
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.emptyContainer{
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+}
