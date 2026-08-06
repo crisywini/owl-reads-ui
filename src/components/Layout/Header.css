@@ -17,6 +17,21 @@
     flex: 1;
 }
 
+.addBooksContainer button{
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: transform 0.3s ease-out ;
+}
+
+.addBooksContainer:hover{
+  transform: translateY(-5px);
+}
+
+
 .emptyContainer{
     display: flex;
     justify-content: flex-start;

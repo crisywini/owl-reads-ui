@@ -1,3 +1,4 @@
+import { GiBlackBook } from 'react-icons/gi';
 import './Header.css'
 
 function Header(){
@@ -13,8 +14,10 @@ function Header(){
             </div>
 
             <div className="addBooksContainer">
-                <button>Add new book</button>
+                <button><GiBlackBook/></button>
             </div>
+
+            
 
         </header>
     )
