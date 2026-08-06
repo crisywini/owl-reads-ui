@@ -1,0 +1,25 @@
+.bookContainer{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid red;
+    transition: transform 0.3s ease;
+    width: 30px;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+
+.bookContainer h1{
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);  
+    font-size: large;
+}
+
+.bookContainer:hover{
+    transform: translateY(-5px);
+}
+
+
+.book--small  {  height: 100px; }
+.book--medium {  height: 200px; }
+.book--large  {  height: 220px; }
