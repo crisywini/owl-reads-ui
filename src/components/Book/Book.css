@@ -4,15 +4,16 @@
     border: 1px solid red;
     transition: transform 0.3s ease;
     width: 30px;
-    align-items: flex-start;
+    align-items: flex-end;
     cursor: pointer;
 }
 
 
 .bookContainer h1{
     writing-mode: vertical-rl;
-    transform: rotate(180deg);  
+    transform: rotate(180deg);
     font-size: large;
+    white-space: nowrap;
 }
 
 .bookContainer:hover{
@@ -20,6 +21,6 @@
 }
 
 
-.book--small  {  height: 100px; }
-.book--medium {  height: 200px; }
-.book--large  {  height: 220px; }
+.book--small  {  height: 200px; }
+.book--medium {  height: 210px; }
+.book--large  {  height: 250px; }

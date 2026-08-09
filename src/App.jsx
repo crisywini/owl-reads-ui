@@ -13,6 +13,11 @@ function App() {
     <>
       <Header/>
       <BookShelf></BookShelf>
+
+      <BookShelf></BookShelf>
+
+      <BookShelf></BookShelf>
+
     </>
   )
 }
